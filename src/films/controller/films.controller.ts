@@ -7,13 +7,18 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { FilmsService } from '../service/films.service';
 import { CreateFilmDto } from '../dto/createFilm.dto';
 import { UpdateFilmDto } from '../dto/updateFilm.dto';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { RolesGuard } from 'src/common/roles/guard/roles.guard';
+import { Roles } from 'src/common/roles/decorator/roles.decorator';
+import { Role } from 'src/common/roles/enum/roles.enum';
 
 @ApiTags('Films')
+@UseGuards(RolesGuard)
 @Controller('films')
 export class FilmsController {
   constructor(private readonly filmsService: FilmsService) {}
@@ -28,8 +33,9 @@ export class FilmsController {
     return await this.filmsService.findAllFilms();
   }
 
-  //TODO validar que solo tengan acceso los usuarios regulares
   @ApiOperation({ summary: 'Find film by id' })
+  @ApiHeader({ name: 'rol', required: true })
+  @Roles(Role.User)
   @Get(':id')
   @ApiResponse({
     status: 200,
@@ -39,22 +45,26 @@ export class FilmsController {
     return await this.filmsService.findOneFilm(+id);
   }
 
-  //TODO validar que solo ADMIN tenga acceso
   @ApiOperation({ summary: 'create film' })
+  @ApiHeader({ name: 'rol', required: true })
   @ApiResponse({
     status: 201,
     description: 'film created.',
     type: () => CreateFilmDto,
   })
+  @Roles(Role.Admin)
   @Post()
   async createFilm(@Body() film: CreateFilmDto) {
     return this.filmsService.createFilm(film);
   }
+
   @ApiOperation({ summary: 'update film' })
+  @ApiHeader({ name: 'rol', required: true })
   @ApiResponse({
     status: 204,
     description: 'film updated.',
   })
+  @Roles(Role.Admin)
   @Patch(':id')
   async updateFilm(
     @Param('id') id: string,
@@ -65,10 +75,12 @@ export class FilmsController {
   }
 
   @ApiOperation({ summary: 'delete film' })
+  @ApiHeader({ name: 'rol', required: true })
   @ApiResponse({
     status: 200,
     description: 'deleted film',
   })
+  @Roles(Role.Admin)
   @Delete(':id')
   removeFilm(@Param('id') id: string) {
     return this.filmsService.removeFilm(id);
