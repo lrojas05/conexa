@@ -7,19 +7,11 @@ import {
   Param,
   Patch,
   Post,
-  UseGuards,
 } from '@nestjs/common';
 import { FilmsService } from '../service/films.service';
 import { CreateFilmDto } from '../dto/createFilm.dto';
 import { UpdateFilmDto } from '../dto/updateFilm.dto';
-import { Roles } from 'src/roles/decorators/roles.decorator';
-import { Role } from 'src/roles/enum/roles.enum';
-import { RolesGuard } from 'src/roles/roles.guard';
-import {
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Films')
 @Controller('films')
@@ -55,8 +47,6 @@ export class FilmsController {
     type: () => CreateFilmDto,
   })
   @Post()
-  //@Roles(Role.Admin)
- // @UseGuards(RolesGuard)
   async createFilm(@Body() film: CreateFilmDto) {
     return this.filmsService.createFilm(film);
   }
@@ -64,11 +54,8 @@ export class FilmsController {
   @ApiResponse({
     status: 204,
     description: 'film updated.',
-    //type: () => UpdateFilmDto,
   })
   @Patch(':id')
-  //@Roles(Role.Admin)
- // @UseGuards(RolesGuard)
   async updateFilm(
     @Param('id') id: string,
     @Body() updateFilmDto: UpdateFilmDto,
@@ -83,8 +70,6 @@ export class FilmsController {
     description: 'deleted film',
   })
   @Delete(':id')
-  //@Roles(Role.Admin)
-  //@UseGuards(RolesGuard)
   removeFilm(@Param('id') id: string) {
     return this.filmsService.removeFilm(id);
   }

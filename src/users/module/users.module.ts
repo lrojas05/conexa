@@ -6,7 +6,7 @@ import { User, UserSchema } from '../schema/user.schema';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from '../constants/constants';
 
-// TODO sacar de ACA mongo y sacar JWT para un modulo AUTH
+// TODO
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),

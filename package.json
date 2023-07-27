@@ -2,7 +2,7 @@
   "name": "movie-manager",
   "version": "0.0.1",
   "description": "App que permite gestionar películas",
-  "author": "",
+  "author": "Lany Rojas",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

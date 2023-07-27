@@ -26,6 +26,4 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsStrongPassword()
   password: string;
-
-  //roles: string[];
 }

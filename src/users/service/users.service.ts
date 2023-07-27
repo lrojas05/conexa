@@ -41,6 +41,6 @@ export class UsersService {
       const token = this.jwtService.sign(payload);
       return token;
     }
-    return 'Usuario Existe';
+    return 'user exists';
   }
 }
