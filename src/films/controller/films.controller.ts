@@ -9,13 +9,18 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { FilmsService } from '../service/films.service';
-import { CreateFilmDto } from '../dto/createFilm.dto';
-import { UpdateFilmDto } from '../dto/updateFilm.dto';
+
+
 import { ApiHeader, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+
+import { FilmsService } from '../service/films.service';
+
 import { RolesGuard } from 'src/common/roles/guard/roles.guard';
 import { Roles } from 'src/common/roles/decorator/roles.decorator';
 import { Role } from 'src/common/roles/enum/roles.enum';
+
+import { CreateFilmDto } from '../dto/createFilm.dto';
+import { UpdateFilmDto } from '../dto/updateFilm.dto';
 
 @ApiTags('Films')
 @UseGuards(RolesGuard)

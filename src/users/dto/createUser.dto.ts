@@ -20,7 +20,7 @@ export class CreateUserDto {
   @ApiProperty({ example: 'Maria', description: 'Email del usuario' })
   @IsNotEmpty()
   @IsEmail()
-  readonly email: string;
+  email: string;
 
   @ApiProperty({ example: 'Maria', description: 'Contraseña del usuario' })
   @IsNotEmpty()

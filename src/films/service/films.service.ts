@@ -1,11 +1,13 @@
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
+
 import { CreateFilmDto } from '../dto/createFilm.dto';
 import { UpdateFilmDto } from '../dto/updateFilm.dto';
-import { Model } from 'mongoose';
 import { Film } from '../schema/film.schema';
-import { InjectModel } from '@nestjs/mongoose';
+
 
 @Injectable()
 export class FilmsService {

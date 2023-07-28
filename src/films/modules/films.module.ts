@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { HttpModule } from '@nestjs/axios';
+
 import { FilmsController } from '../controller/films.controller';
 import { FilmsService } from '../service/films.service';
-import { HttpModule } from '@nestjs/axios';
 import { Film, FilmSchema } from '../schema/film.schema';
-import { MongooseModule } from '@nestjs/mongoose';
+
 
 @Module({
   imports: [

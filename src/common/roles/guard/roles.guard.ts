@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+
 import { ROLES_KEY } from '../decorator/roles.decorator';
 import { Role } from '../enum/roles.enum';
 
@@ -21,7 +22,6 @@ export class RolesGuard implements CanActivate {
     }
 
     const request = context.switchToHttp().getRequest();
-    console.log('log', request.headers.rol);
     const rol = roles.some((role) => request.headers.rol?.includes(role));
 
     if (!rol) {
