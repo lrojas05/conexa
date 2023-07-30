@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  UseFilters,
   UseGuards,
 } from '@nestjs/common';
 
@@ -15,12 +16,13 @@ import { ApiHeader, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { FilmsService } from '../service/films.service';
 
-import { RolesGuard } from 'src/common/roles/guard/roles.guard';
-import { Roles } from 'src/common/roles/decorator/roles.decorator';
-import { Role } from 'src/common/roles/enum/roles.enum';
+import { RolesGuard } from '../../common/roles/guard/roles.guard';
+import { Roles } from '../../common/roles/decorator/roles.decorator';
+import { Role } from '../../common/roles/enum/roles.enum';
 
 import { CreateFilmDto } from '../dto/createFilm.dto';
 import { UpdateFilmDto } from '../dto/updateFilm.dto';
+
 
 @ApiTags('Films')
 @UseGuards(RolesGuard)
@@ -34,8 +36,9 @@ export class FilmsController {
     status: 200,
     description: 'Find films successfully.',
   })
-  async findAllFilms() {
-    return await this.filmsService.findAllFilms();
+  async findAllFilms(){
+    const response = await this.filmsService.findAllFilms();
+    return response;
   }
 
   @ApiOperation({ summary: 'Find film by id' })
@@ -55,7 +58,7 @@ export class FilmsController {
   @ApiResponse({
     status: 201,
     description: 'film created.',
-    type: () => CreateFilmDto,
+    type: () => UpdateFilmDto,
   })
   @Roles(Role.Admin)
   @Post()

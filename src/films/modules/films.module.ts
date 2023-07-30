@@ -9,7 +9,8 @@ import { Film, FilmSchema } from '../schema/film.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Film.name, schema: FilmSchema }]),
+    MongooseModule.forFeature([{ name: Film.name, schema: FilmSchema 
+     }]),
     HttpModule,
   ],
   controllers: [FilmsController],

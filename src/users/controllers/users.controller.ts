@@ -1,10 +1,24 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpException,
+  HttpStatus,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { UsersService } from '../service/users.service';
 import { CreateUserDto } from '../dto/createUser.dto';
 import { UpdateUserDto } from '../dto/updateUser.dto';
-import {  JwtAuthGuard } from '../../common/jwt/guard/jwt.guard'
+import { JwtAuthGuard } from '../../common/jwt/guard/jwt.guard';
+
 
 @ApiTags('Users')
 @Controller('users')
@@ -18,8 +32,10 @@ export class UsersController {
     type: () => CreateUserDto,
   })
   @Post('register')
-  signUp(@Body() user: CreateUserDto) {
-    return this.usersService.signUp(user);
+
+   signUp(@Body() user: CreateUserDto) { 
+     return this.usersService.signUp(user);
+
   }
 
   @ApiOperation({ summary: 'user login' })
@@ -31,6 +47,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @Post('login')
+  @HttpCode(HttpStatus.OK)
   singIn(@Body() user: UpdateUserDto) {
     return this.usersService.signIn(user);
   }

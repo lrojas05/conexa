@@ -3,50 +3,47 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Film extends Document {
-  @Prop()
+  @Prop({ required: true, unique: true })
   title: string;
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   episode_id: number;
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   opening_crawl: string;
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   director: string;
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   producer: string;
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   release_date: Date;
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   characters: [string];
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   planets: [string];
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   starships: [string];
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   vehicles: [string];
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   species: [string];
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   created: Date;
 
   @Prop()
   edited: Date;
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   url: string;
-
-  @Prop()
-  role: string;
 }
 
 export const FilmSchema = SchemaFactory.createForClass(Film);
