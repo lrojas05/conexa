@@ -11,9 +11,10 @@ import { FilmsModule } from './films/modules/films.module';
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal : true,
+      expandVariables: true,
     }
     ),
-   MongooseModule.forRoot('mongodb://127.0.0.1:27017/conexa', {serverSelectionTimeoutMS: 1000}),
+   MongooseModule.forRoot(`mongodb://${process.env.MONGO_URI}/${process.env.MONGO_NAME}`, {serverSelectionTimeoutMS: +process.env.MONGO_TIMEOUT}),
     UsersModule,
     FilmsModule,
     ]
