@@ -2,11 +2,16 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import * as express from 'express';
 
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  app.enableCors({
+    origin: true,
+    methods: 'GET,HEAD,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
   app.getHttpAdapter().getInstance().disable('x-powered-by');
 
   const config = new DocumentBuilder()
