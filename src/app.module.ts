@@ -14,7 +14,7 @@ import { FilmsModule } from './films/modules/films.module';
       expandVariables: true,
     }
     ),
-   MongooseModule.forRoot(`mongodb://${process.env.MONGO_URI}/${process.env.MONGO_NAME}`, {serverSelectionTimeoutMS: +process.env.MONGO_TIMEOUT}),
+   MongooseModule.forRoot(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_URI}/${process.env.MONGO_NAME}`, {serverSelectionTimeoutMS: +process.env.MONGO_TIMEOUT}),
     UsersModule,
     FilmsModule,
     ]
