@@ -12,19 +12,19 @@ import { UpdateUserDto } from '../../../users/dto/updateUser.dto';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel(User.name) private userModel: Model<User>,
+   @InjectModel(User.name) private userModel: Model<User>,
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(users: UpdateUserDto) {
-    const user = await this.userModel.findOne({ email: users.email });
+  async validateUser(users: UpdateUserDto) : Promise <User>{
+    const user = await this.userModel.findOne({ email: users.email }).exec();
     if (user) {
       const isMatch = await bcrypt.compare(users.password, user.password);
       if (!isMatch) {
         throw new UnauthorizedException();
       }
       return user;
-    }
+    } throw new HttpException('User Not Found ', HttpStatus.NOT_FOUND);
   }
 
   generateJWT(user: UpdateUserDto) {
@@ -35,21 +35,21 @@ export class AuthService {
 
     const access_token = this.jwtService.sign(payload);
     return access_token;
-  }
+}
 
 
-  async validateEmail(users: CreateUserDto) {
+  async validateEmail(users: CreateUserDto) : Promise <User>{
 
-      const user = await this.userModel.findOne({ email: users.email });
-      if (user === null) return users.email;
+      const user = await this.userModel.findOne({ email: users.email }).exec();
+      if (user === null) return user; 
       throw new HttpException('email duplicate', HttpStatus.NOT_ACCEPTABLE);
   }
 
-  async createPassword(users: UpdateUserDto) {
+  async createPassword(users: UpdateUserDto) : Promise <User> {
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(users.password, salt);
     users.password = hashPassword;
     const user = await new this.userModel(users).save();
-    return user.password;
+    return user;
   }
 }

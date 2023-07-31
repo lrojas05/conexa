@@ -32,10 +32,8 @@ export class UsersController {
     type: () => CreateUserDto,
   })
   @Post('register')
-
    signUp(@Body() user: CreateUserDto) { 
      return this.usersService.signUp(user);
-
   }
 
   @ApiOperation({ summary: 'user login' })

@@ -6,26 +6,28 @@ import { UpdateUserDto } from '../dto/updateUser.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService){}
 
-  async signUp(createUserDto: CreateUserDto): Promise<any> {
-    const email = await this.authService.validateEmail(createUserDto);
-    const password = await this.authService.createPassword(createUserDto);
+  async signUp(createUserDto: CreateUserDto) {
+    await this.authService.validateEmail(createUserDto);
+    const userP = await this.authService.createPassword(createUserDto);
     return {
-      data: {
-        email: email,
-        password: password,
-      },
+      email: userP.email,
+      password: userP.password,
     };
   }
-
-  async signIn(updateUserDto: UpdateUserDto): Promise<any> {
+  
+  async signIn(updateUserDto: UpdateUserDto) {
     const user = await this.authService.validateUser(updateUserDto);
+    
     const access_token = this.authService.generateJWT(user);
     return {
-      data: {
-        access_token,
-        user,
+      access_token,
+      user: {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password,
       },
     };
   }
