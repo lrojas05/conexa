@@ -6,6 +6,7 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   app.getHttpAdapter().getInstance().disable('x-powered-by');
 
   const config = new DocumentBuilder()
