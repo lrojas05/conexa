@@ -33,6 +33,7 @@ async function bootstrap() {
     whitelist : true,
   }));
 
+  app.setGlobalPrefix("api");
 await app.listen(process.env.PORT, process.env.HOSTNAME);
 }
 bootstrap();
