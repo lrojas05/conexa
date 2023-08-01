@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://conexa.ai/" target="blank"><img src="./imagen/Banner_Notion_2.svg" width="200" alt="Conexa Logo" /></a>
+  <a href="https://conexa.ai/" target="blank"><img src="./imagen/Banner_Notion_2.png" width="200" alt="Conexa Logo" /></a>
 </p>
 
-[circleci-url]: https://conexa.ai/
+[circleci-url]: https://conexatech.notion.site/Backend-NodeJS-Ssr-Test-d3fa3d4c614249b2afeac5d8cf98784f
 
 ## Description
 
-[CONEXA](https://github.com/lrojas05/conexa) 
+[Backend NodeJS Ssr. Test](https://conexatech.notion.site/Backend-NodeJS-Ssr-Test-d3fa3d4c614249b2afeac5d8cf98784f) 
 
 ## Installation
 
