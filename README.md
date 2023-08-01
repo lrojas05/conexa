@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://conexa.ai/" target="blank"><img src="./imagen/Banner_Notion_2.png" width="200" alt="Conexa Logo" /></a>
+  <a href="https://conexa.ai/" target="blank"><img src="./imagen/Banner_Notion.png" width="200" alt="Conexa Logo" /></a>
 </p>
 
 [circleci-url]: https://conexatech.notion.site/Backend-NodeJS-Ssr-Test-d3fa3d4c614249b2afeac5d8cf98784f
