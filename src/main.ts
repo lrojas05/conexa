@@ -2,8 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import * as express from 'express';
-
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -22,13 +20,19 @@ async function bootstrap() {
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
-
+   SwaggerModule.setup('api', app, document, {
+    customCssUrl:
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
+    customJs: [
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.js',
+    ],
+   });
   app.useGlobalPipes(new ValidationPipe({
     transform :  true,
     whitelist : true,
   }));
 
-await app.listen(process.env.HOSTNAME);
+await app.listen(process.env.PORT, process.env.HOSTNAME);
 }
 bootstrap();
