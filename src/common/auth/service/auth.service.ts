@@ -17,7 +17,7 @@ export class AuthService {
   ) {}
 
   async validateUser(users: UpdateUserDto) : Promise <User>{
-    const user = await this.userModel.findOne({ email: users.email }).exec();
+    const user = await this.userModel.findOne({ email: users.email });
     if (user) {
       const isMatch = await bcrypt.compare(users.password, user.password);
       if (!isMatch) {
