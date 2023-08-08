@@ -79,7 +79,7 @@ export class FilmsController {
     @Body() updateFilmDto: UpdateFilmDto,
   ) {
     updateFilmDto.edited = new Date();
-    return this.filmsService.updateFilm(id, updateFilmDto);
+    return this.filmsService.updateFilm(+id, updateFilmDto);
   }
 
   @ApiOperation({ summary: 'delete film' })

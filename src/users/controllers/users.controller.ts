@@ -43,7 +43,6 @@ export class UsersController {
     type: () => UpdateUserDto,
   })
   @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Post('login')
   @HttpCode(HttpStatus.OK)
   singIn(@Body() user: UpdateUserDto) {

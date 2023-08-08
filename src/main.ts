@@ -18,7 +18,6 @@ async function bootstrap() {
     .setDescription('App que permite gestionar películas')
     .setVersion('1.0')
     .addTag('Films')
-    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
    SwaggerModule.setup('api', app, document, {
