@@ -13,7 +13,6 @@ export class UsersService {
     const userP = await this.authService.createPassword(createUserDto);
     return {
       email: userP.email,
-      password: userP.password,
     };
   }
   
@@ -27,7 +26,6 @@ export class UsersService {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        password: user.password,
       },
     };
   }
