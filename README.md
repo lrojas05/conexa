@@ -58,8 +58,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-## Additional
- ###### [URL de DEPLOY SERVER]( https://conexa-test-lrojas05.vercel.app/api)
 
 
 
