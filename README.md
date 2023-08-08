@@ -1,11 +1,12 @@
 
+
 ## Requirements
 [NodeJS v18.x](https://nodejs.org/es)
 
 
 ## Project configuration
 ```bash
-git clone https://github.com/lrojas05/movie-manager.git
+git clone https://github.com/lrojas05/movie-manager
 ```
 ## Installation
 
