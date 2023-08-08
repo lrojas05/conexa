@@ -1,12 +1,3 @@
-<p align="center">
-  <a href="https://conexa.ai/" target="blank"><img src="./imagen/Banner_Notion.png" width="200" alt="Conexa Logo" /></a>
-</p>
-
-[circleci-url]: https://conexatech.notion.site/Backend-NodeJS-Ssr-Test-d3fa3d4c614249b2afeac5d8cf98784f
-
-## Description
-
-[Backend NodeJS Ssr. Test](https://conexatech.notion.site/Backend-NodeJS-Ssr-Test-d3fa3d4c614249b2afeac5d8cf98784f) 
 
 ## Requirements
 [NodeJS v18.x](https://nodejs.org/es)
@@ -14,8 +5,7 @@
 
 ## Project configuration
 ```bash
-git clone https://github.com/lrojas05/conexa
-cd ./conexa
+git clone https://github.com/lrojas05/movie-manager.git
 ```
 ## Installation
 
