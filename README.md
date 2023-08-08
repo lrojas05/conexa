@@ -1,6 +1,4 @@
-<p align="center">
-  <a href="https://conexa.ai/" target="blank"><img src="./imagen/Banner_Notion.png" width="200" alt="Conexa Logo" /></a>
-</p>
+
 
 ## Requirements
 [NodeJS v18.x](https://nodejs.org/es)
@@ -8,8 +6,7 @@
 
 ## Project configuration
 ```bash
-git clone https://github.com/lrojas05/conexa
-cd ./conexa
+git clone https://github.com/lrojas05/movie-manager
 ```
 ## Installation
 
@@ -62,8 +59,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-## Additional
- ###### [URL de DEPLOY SERVER]( https://conexa-test-lrojas05.vercel.app/api)
 
 
 

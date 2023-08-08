@@ -14,7 +14,7 @@ async function bootstrap() {
   app.getHttpAdapter().getInstance().disable('x-powered-by');
 
   const config = new DocumentBuilder()
-    .setTitle('Conexa Test')
+    .setTitle('movie-manager Test')
     .setDescription('App que permite gestionar películas')
     .setVersion('1.0')
     .addTag('Films')
